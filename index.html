@@ -593,6 +593,18 @@
   document.getElementById('doc-date').textContent =
     d.toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' });
 
+  let selectedPkg = null;
+
+  function selectPackage(el, name, price) {
+    document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedPkg = name + ' — ' + price;
+    const box = document.getElementById('selected-summary');
+    document.getElementById('sum-pkg-name').textContent = selectedPkg;
+    box.style.display = 'block';
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
   document.getElementById('sig-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -604,6 +616,12 @@
 
     errEl.style.display = 'none';
 
+    if (!selectedPkg) {
+      errEl.textContent = 'יש לבחור חבילה לפני החתימה.';
+      errEl.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     if (!name || !phone || !address) {
       errEl.textContent = 'יש למלא את כל השדות.';
       errEl.style.display = 'block';
@@ -627,10 +645,10 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           access_key: 'e1559ec7-0993-45ec-b13a-09861366ef2e',
-          subject:    'הסכם נחתם — לקוח חדש',
+          subject:    'הסכם נחתם — ' + selectedPkg,
           from_name:  'מערכת הסכמים — רפואת עץ הדורות',
           to:         'DA212313092@GMAIL.COM',
-          message:    'הסכם נחתם דיגיטלית\n\nשם: ' + name + '\nטלפון: ' + phone + '\nכתובת: ' + address + '\nתאריך ושעה: ' + signedAt
+          message:    'הסכם נחתם דיגיטלית\n\nחבילה נבחרת: ' + selectedPkg + '\n\nשם: ' + name + '\nטלפון: ' + phone + '\nכתובת: ' + address + '\nתאריך ושעה: ' + signedAt
         })
       });
       const data = await res.json();
