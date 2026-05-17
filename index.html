@@ -135,8 +135,24 @@
     .packages-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 20px;
       margin-bottom: 48px;
+    }
+
+    .pkg-old-price {
+      font-size: 14px;
+      font-weight: 600;
+      color: #999;
+      text-decoration: line-through;
+      margin-bottom: 2px;
+    }
+
+    .pkg-note {
+      font-size: 11px;
+      opacity: 0.7;
+      margin-top: -10px;
+      margin-bottom: 12px;
+      font-style: italic;
     }
 
     .package-card {
@@ -356,6 +372,47 @@
       cursor: pointer;
     }
 
+    .sig-pad-wrap {
+      margin: 20px 0;
+    }
+
+    .sig-pad-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    #sig-canvas {
+      width: 100%;
+      height: 160px;
+      border: 2px solid var(--green-tint);
+      border-radius: 10px;
+      background: #fff;
+      display: block;
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+    #sig-canvas.has-sig {
+      border-color: var(--green);
+    }
+
+    .btn-clear-sig {
+      margin-top: 6px;
+      background: none;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 4px 14px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 12px;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .btn-clear-sig:hover { border-color: #999; color: #555; }
+
     .btn-submit {
       width: 100%;
       background: var(--green);
@@ -453,61 +510,40 @@
 
     <!-- INTRO -->
     <div class="intro-box">
-      השירות מיועד למטפלים, בעלי עסקים, מרצים ובעלי קהילות המעוניינים לבנות נוכחות דיגיטלית מקצועית ומדויקת לעסק שלהם. הסכם זה נועד ליצור סדר, בהירות ותיאום ציפיות מלא בין הצדדים.
+      <strong>ברוך הבא לבניית האתר שלך לפי עיצוב האיפיון שלך.</strong><br><br>
+      מיד לאחר ביצוע התשלום ניצור איתך קשר לגבי פגישת אפיון — בטלפון או בזום, לפי מה שנוח לך. הפגישה קצרה, 30 דקות בלבד, ושם נאפיין יחד את האתר: מה בונים, מה הצבעים, מה המסרים.<br><br>
+      אתה אחראי לספק לנו את כל החומרים הדרושים — נשלח לך רשימה מסודרת של מה שצריך: תמונות, טקסטים, לוגו, וכל פרט נוסף שנזדקק לו. הצבעים ייבחרו ביחד בפגישה.
     </div>
 
     <!-- PACKAGES -->
     <h2 class="section-title">חבילות השירות</h2>
     <div class="packages-grid">
 
-      <div class="package-card light" onclick="selectPackage(this,'חבילת בסיס','&#8362;2,000')"><div class="pkg-check">&#10003;</div>
-        <div class="pkg-name">חבילת בסיס</div>
-        <div class="pkg-price">&#8362;2,000</div>
+      <div class="package-card light" onclick="selectPackage(this,'אתר בסיסי','&#8362;2,999')"><div class="pkg-check">&#10003;</div>
+        <div class="pkg-name">אתר בסיסי</div>
+        <div class="pkg-old-price">&#8362;7,000</div>
+        <div class="pkg-price">&#8362;2,999</div>
         <ul>
-          <li>שיחת אפיון עד 35 דקות</li>
-          <li>הבנת העסק וקהל היעד</li>
-          <li>התאמת צבעי מותג וחיבור ללוגו</li>
-          <li>דף נחיתה מקצועי ומותאם אישית</li>
-          <li>התאמה מלאה למובייל</li>
+          <li>פגישת אפיון 30 דקות (טלפון / זום)</li>
+          <li>עיצוב מותאם אישית לפי צבעי המותג</li>
+          <li>דף נחיתה מקצועי ומותאם לנייד</li>
+          <li>חיבור לוגו + צבעים שנבחרים יחד</li>
           <li>עד 3 סבבי תיקונים</li>
+          <li>ללא סליקה / ללא אקדמיה</li>
         </ul>
       </div>
 
-      <div class="package-card light" onclick="selectPackage(this,'חבילת מותג','&#8362;3,000')"><div class="pkg-check">&#10003;</div>
-        <div class="pkg-name">חבילת מותג</div>
-        <div class="pkg-price">&#8362;3,000</div>
+      <div class="package-card dark" onclick="selectPackage(this,'אתר עם סליקה + חנות / אקדמיה','&#8362;8,000&#8211;9,800')"><div class="pkg-check">&#10003;</div>
+        <div class="pkg-name">אתר עם סליקה + חנות / אקדמיה</div>
+        <div class="pkg-price">&#8362;8,000&#8211;9,800</div>
+        <div class="pkg-note">* המחיר הסופי נקבע לפי מבנה הפרויקט ובהתאמה מול דוד</div>
         <ul>
-          <li>כולל את כל חבילת הבסיס</li>
-          <li>בניית שפה מותגית מלאה</li>
-          <li>התאמת צבעי מותג מקצועיים</li>
-          <li>בניית קו עיצובי לעסק</li>
-          <li>כתיבה שיווקית מקצועית</li>
-          <li>חידוד מסרים וכותרות</li>
-        </ul>
-      </div>
-
-      <div class="package-card light" onclick="selectPackage(this,'חבילת עסק מתקדמת','&#8362;3,500')"><div class="pkg-check">&#10003;</div>
-        <div class="pkg-name">חבילת עסק מתקדמת</div>
-        <div class="pkg-price">&#8362;3,500</div>
-        <ul>
-          <li>כולל את כל חבילות הקודמות</li>
-          <li>חיבור למערכת סליקה</li>
-          <li>קביעת תורים דרך האתר</li>
-          <li>מכירת מוצרים דיגיטלית ופיזית</li>
-          <li>עמודי מוצר וטפסים מתקדמים</li>
-        </ul>
-      </div>
-
-      <div class="package-card dark" onclick="selectPackage(this,'חבילת אקדמיה','&#8362;8,000&#8211;9,000')"><div class="pkg-check">&#10003;</div>
-        <div class="pkg-name">חבילת אקדמיה</div>
-        <div class="pkg-price">&#8362;8,000&#8211;9,000</div>
-        <ul>
-          <li>מערכת קורסים דיגיטליים</li>
-          <li>אזור תלמידים אישי</li>
-          <li>חיבור לסליקה ומנויים חודשיים</li>
-          <li>העלאת שיעורים מוקלטים</li>
-          <li>ניהול תלמידים ומערכת התחברות</li>
-          <li>אזור קבצים וחומרי לימוד</li>
+          <li>כולל את כל מה שבאתר הבסיסי</li>
+          <li>סליקה מובנית בתוך האתר</li>
+          <li>הוספת חנות מוצרים דיגיטלית / פיזית</li>
+          <li>או: מערכת אקדמיה — קורסים + תלמידים</li>
+          <li>ניהול הזמנות, מנויים וחשבונות</li>
+          <li>עד 3 סבבי תיקונים</li>
         </ul>
       </div>
 
@@ -536,7 +572,9 @@
     <div class="doc-section">
       <h3>תיקונים נוספים</h3>
       <p>לאחר ניצול 3 סבבי התיקונים הכלולים בחבילה:</p>
-      <div class="highlight-box">כל סבב תיקונים נוסף — &#8362;150</div>
+      <div class="highlight-box">כל סבב תיקונים נוסף — &#8362;250</div>
+      <div class="highlight-box">הוספת עמוד חדש שלא סוכם באפיון — &#8362;250</div>
+      <div class="highlight-box">שינוי מחיר / פרטים קטנים באתר — &#8362;40 לכל שינוי</div>
     </div>
 
     <div class="doc-section">
@@ -554,6 +592,7 @@
     <div class="doc-section">
       <h3>אחסון ותחזוקת האתר</h3>
       <div class="highlight-box">עלות חודשית: &#8362;45 — כולל אחסון, אבטחה בסיסית, גיבויים ותחזוקה טכנית</div>
+      <div class="highlight-box">הוספת דומיין אישי — &#8362;200 לשנה</div>
     </div>
 
     <div class="doc-section">
@@ -616,6 +655,12 @@
           <label for="agree">קראתי והבנתי את כל תנאי ההסכם המפורטים לעיל ואני מסכים להם במלואם</label>
         </div>
 
+        <div class="sig-pad-wrap">
+          <label class="sig-pad-label">חתימה אישית *</label>
+          <canvas id="sig-canvas" width="600" height="160"></canvas>
+          <button type="button" class="btn-clear-sig" id="btn-clear-sig">נקה חתימה</button>
+        </div>
+
         <button type="submit" class="btn-submit" id="submit-btn">אני מאשר ומסכים להסכם &#10003;</button>
       </form>
 
@@ -653,6 +698,49 @@
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
+  // ── Signature pad ──
+  const canvas = document.getElementById('sig-canvas');
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+  let hasSig = false;
+
+  function resizeCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    const saved = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    canvas.width = rect.width * ratio;
+    canvas.height = rect.height * ratio;
+    ctx.scale(ratio, ratio);
+    ctx.strokeStyle = '#15322f';
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.putImageData(saved, 0, 0);
+  }
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const src = e.touches ? e.touches[0] : e;
+    return { x: src.clientX - rect.left, y: src.clientY - rect.top };
+  }
+
+  canvas.addEventListener('mousedown',  e => { drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+  canvas.addEventListener('mousemove',  e => { if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasSig = true; canvas.classList.add('has-sig'); });
+  canvas.addEventListener('mouseup',    () => { drawing = false; });
+  canvas.addEventListener('mouseleave', () => { drawing = false; });
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); }, { passive: false });
+  canvas.addEventListener('touchmove',  e => { e.preventDefault(); if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasSig = true; canvas.classList.add('has-sig'); }, { passive: false });
+  canvas.addEventListener('touchend',   () => { drawing = false; });
+
+  document.getElementById('btn-clear-sig').addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    hasSig = false;
+    canvas.classList.remove('has-sig');
+  });
+
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
   document.getElementById('sig-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -680,6 +768,12 @@
       errEl.style.display = 'block';
       return;
     }
+    if (!hasSig) {
+      errEl.textContent = 'יש לחתום בשדה החתימה לפני שליחה.';
+      errEl.style.display = 'block';
+      canvas.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
 
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
@@ -696,7 +790,7 @@
           subject:    'הסכם נחתם — ' + selectedPkg,
           from_name:  'מערכת הסכמים — רפואת עץ הדורות',
           to:         'DA212313092@GMAIL.COM',
-          message:    'הסכם נחתם דיגיטלית\n\nחבילה נבחרת: ' + selectedPkg + '\n\nשם: ' + name + '\nטלפון: ' + phone + '\nכתובת: ' + address + '\nתאריך ושעה: ' + signedAt
+          message:    'הסכם נחתם דיגיטלית\n\nחבילה נבחרת: ' + selectedPkg + '\n\nשם: ' + name + '\nטלפון: ' + phone + '\nכתובת: ' + address + '\nתאריך ושעה: ' + signedAt + '\n\nחתימה: [מצורפת כתמונה base64]\n' + canvas.toDataURL('image/png')
         })
       });
       const data = await res.json();
