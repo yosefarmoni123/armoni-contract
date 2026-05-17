@@ -811,11 +811,6 @@
     el.classList.add('selected');
     selectedPkg = name + ' — ' + price;
     selectedPkgType = pkgType;
-    const box = document.getElementById('selected-summary');
-    document.getElementById('sum-pkg-name').textContent = selectedPkg;
-    box.style.display = 'block';
-    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    // Show package-specific contract sections
     document.querySelectorAll('.pkg-specific').forEach(s => {
       s.style.display = s.classList.contains('pkg-' + pkgType) ? 'block' : 'none';
     });
