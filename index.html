@@ -195,6 +195,53 @@
     .package-card.light ul li::before { color: var(--green); }
     .package-card.dark  ul li::before { color: rgba(255,255,255,0.6); }
 
+    /* ── PACKAGE SELECTION STATES ── */
+    .package-card {
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.15s, border 0.2s;
+      border: 2.5px solid transparent;
+    }
+
+    .package-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(21,50,47,0.18);
+    }
+
+    .package-card.selected {
+      border: 2.5px solid #15322f;
+      box-shadow: 0 0 0 4px rgba(21,50,47,0.15);
+      transform: translateY(-2px);
+    }
+
+    .package-card.dark.selected {
+      border: 2.5px solid #fff;
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.25);
+    }
+
+    .pkg-check {
+      display: none;
+      float: left;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #15322f;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 26px;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .package-card.dark .pkg-check {
+      background: #fff;
+      color: #15322f;
+    }
+
+    .package-card.selected .pkg-check {
+      display: inline-block;
+    }
+
     /* ── CONTENT SECTIONS ── */
     .doc-section {
       margin-bottom: 36px;
