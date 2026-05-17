@@ -413,6 +413,49 @@
 
     .btn-clear-sig:hover { border-color: #999; color: #555; }
 
+    .contract-notice {
+      background: var(--green-light);
+      border: 2px dashed var(--green);
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--green);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .pkg-section-wrap {
+      border-radius: 10px;
+      background: var(--green-light);
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      border: 1.5px solid var(--green-tint);
+    }
+
+    .pkg-section-badge {
+      display: inline-block;
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .pkg-badge-basic   { background: var(--green); color: #fff; }
+    .pkg-badge-premium { background: #fff; color: var(--green); border: 1.5px solid var(--green); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .packages-grid { grid-template-columns: 1fr; }
+      .form-grid     { grid-template-columns: 1fr; }
+      .content-wrap  { padding: 20px 16px; }
+      .header-inner  { padding: 16px; }
+      .pkg-price     { font-size: 22px; }
+      .header-title  { font-size: 18px; }
+      .signature-section { padding: 20px 16px; }
+    }
+
     .payment-notice {
       background: #fff8e1;
       border: 1.5px solid #f5c842;
@@ -531,31 +574,33 @@
     <h2 class="section-title">חבילות השירות</h2>
     <div class="packages-grid">
 
-      <div class="package-card light" onclick="selectPackage(this,'אתר בסיסי','&#8362;2,999')"><div class="pkg-check">&#10003;</div>
+      <div class="package-card light" onclick="selectPackage(this,'אתר בסיסי','&#8362;2,999','basic')"><div class="pkg-check">&#10003;</div>
         <div class="pkg-name">אתר בסיסי</div>
         <div class="pkg-old-price">&#8362;7,000</div>
         <div class="pkg-price">&#8362;2,999</div>
         <ul>
-          <li>פגישת אפיון 30 דקות (טלפון / זום)</li>
-          <li>עיצוב מותאם אישית לפי צבעי המותג</li>
-          <li>דף נחיתה מקצועי ומותאם לנייד</li>
-          <li>חיבור לוגו + צבעים שנבחרים יחד</li>
-          <li>עד 3 סבבי תיקונים</li>
-          <li>ללא סליקה / ללא אקדמיה</li>
+          <li>אתר תדמית מקצועי</li>
+          <li>התאמה מלאה למובייל</li>
+          <li>חיבור לוואטסאפ</li>
+          <li>טופס יצירת קשר</li>
+          <li>אבטחה בסיסית</li>
+          <li>עד 3 עמודים</li>
+          <li>3 סבבי תיקונים</li>
         </ul>
       </div>
 
-      <div class="package-card dark" onclick="selectPackage(this,'אתר עם סליקה + חנות / אקדמיה','&#8362;8,000&#8211;9,800')"><div class="pkg-check">&#10003;</div>
-        <div class="pkg-name">אתר עם סליקה + חנות / אקדמיה</div>
+      <div class="package-card dark" onclick="selectPackage(this,'אתר עם סליקה + קורסים / חנות','&#8362;8,000&#8211;9,800','premium')"><div class="pkg-check">&#10003;</div>
+        <div class="pkg-name">אתר עם סליקה + קורסים / חנות</div>
         <div class="pkg-price">&#8362;8,000&#8211;9,800</div>
-        <div class="pkg-note">* המחיר הסופי נקבע לפי מבנה הפרויקט ובהתאמה מול דוד</div>
+        <div class="pkg-note">* המחיר הסופי נקבע לפי מבנה הפרויקט</div>
         <ul>
-          <li>כולל את כל מה שבאתר הבסיסי</li>
-          <li>סליקה מובנית בתוך האתר</li>
-          <li>הוספת חנות מוצרים דיגיטלית / פיזית</li>
-          <li>או: מערכת אקדמיה — קורסים + תלמידים</li>
-          <li>ניהול הזמנות, מנויים וחשבונות</li>
-          <li>עד 3 סבבי תיקונים</li>
+          <li>אתר מקצועי מותאם אישית</li>
+          <li>חנות + סליקה מאובטחת</li>
+          <li>אזור תלמידים / קורסים</li>
+          <li>חיבור טפסים ווואטסאפ</li>
+          <li>אבטחה מתקדמת</li>
+          <li>ליווי אישי</li>
+          <li>3 סבבי התאמות</li>
         </ul>
       </div>
 
@@ -564,58 +609,17 @@
 
     <!-- CONTENT SECTIONS -->
 
-    <div class="doc-section">
-      <h3>מהו סבב תיקונים</h3>
-      <p>סבב תיקונים הוא רשימת שינויים מסודרת שנשלחת בהודעה אחת או במסמך מסודר. כדי שהתהליך יהיה מהיר ומדויק, יש לרכז את כל ההערות בצורה ברורה:</p>
-      <ul>
-        <li>שינוי טקסט</li>
-        <li>החלפת תמונה</li>
-        <li>שינוי צבע כפתור</li>
-        <li>הגדלת לוגו</li>
-        <li>שינוי כותרת</li>
-      </ul>
+    <!-- Contract notice before package selected -->
+    <div id="contract-notice" class="contract-notice">
+      &#128073; בחר חבילה למעלה כדי לראות את פרטי ההסכם המלאים
     </div>
 
-    <div class="doc-section">
-      <h3>זמני תיקון</h3>
-      <div class="highlight-box">לאחר שליחת סבב תיקונים מסודר — זמן ביצוע עד 48 שעות עסקים</div>
-    </div>
+    <!-- ══ COMMON SECTIONS ══ -->
 
     <div class="doc-section">
-      <h3>תיקונים נוספים</h3>
-      <p>לאחר ניצול 3 סבבי התיקונים הכלולים בחבילה:</p>
-      <div class="highlight-box">כל סבב תיקונים נוסף — &#8362;250</div>
-      <div class="highlight-box">הוספת עמוד חדש שלא סוכם באפיון — &#8362;250</div>
-      <div class="highlight-box">שינוי מחיר / פרטים קטנים באתר — &#8362;40 לכל שינוי</div>
-    </div>
-
-    <div class="doc-section">
-      <h3>אבטחה והגנת האתר</h3>
-      <p>כל האתרים נבנים עם רמת אבטחה גבוהה ומאוחסנים בענן מאובטח ומתקדם:</p>
-      <ul>
-        <li>חיבור SSL מאובטח</li>
-        <li>הגנות בסיסיות מפני פריצות</li>
-        <li>גיבויי מערכת</li>
-        <li>שמירה על יציבות האתר</li>
-        <li>שרתים מאובטחים ותחזוקת אבטחה שוטפת</li>
-      </ul>
-    </div>
-
-    <div class="doc-section">
-      <h3>אחסון ותחזוקת האתר</h3>
-      <div class="highlight-box">עלות חודשית: &#8362;45 — כולל אחסון, אבטחה בסיסית, גיבויים ותחזוקה טכנית</div>
-      <div class="highlight-box">הוספת דומיין אישי — &#8362;200 לשנה</div>
-    </div>
-
-    <div class="doc-section">
-      <h3>שינויים לאחר מסירת האתר</h3>
-      <div class="highlight-box">כל שינוי באתר לאחר מסירה — &#8362;200 לשינוי</div>
-      <p style="margin-top:10px;">לדוגמה: החלפת טקסטים, שינוי צבעים, הוספת תמונות, שינוי אזורים, עדכון תוכן.</p>
-    </div>
-
-    <div class="doc-section">
-      <h3>אחריות על תוכן וחומרים</h3>
-      <p>האחריות על התמונות, הסרטונים, הטקסטים והחומרים שנשלחים לצורך בניית האתר חלה על הלקוח בלבד. הלקוח מאשר כי יש לו זכויות שימוש בכל החומרים שהועברו.</p>
+      <h3>תקשורת</h3>
+      <div class="highlight-box">&#128172; עיקר התקשורת בין הצדדים תתבצע דרך וואטסאפ</div>
+      <p>לאחר החתימה ותשלום יישלח אישור דרך וואטסאפ ותואם מועד לפגישת האפיון.</p>
     </div>
 
     <div class="doc-section">
@@ -628,14 +632,105 @@
     </div>
 
     <div class="doc-section">
+      <h3>מהו סבב תיקונים</h3>
+      <p>סבב תיקונים הוא רשימת שינויים מסודרת שנשלחת בהודעה אחת או במסמך אחד. יש לרכז את כל ההערות יחד:</p>
+      <ul>
+        <li>שינוי טקסט</li>
+        <li>החלפת תמונה</li>
+        <li>שינוי צבע / כפתור</li>
+        <li>שינוי כותרת</li>
+      </ul>
+    </div>
+
+    <div class="doc-section">
+      <h3>זמני תיקון</h3>
+      <div class="highlight-box">לאחר שליחת סבב תיקונים מסודר — זמן ביצוע עד 48 שעות עסקים</div>
+    </div>
+
+    <div class="doc-section">
+      <h3>תיקונים ותוספות — תעריפים</h3>
+      <div class="highlight-box">כל סבב תיקונים נוסף (מעבר ל-3) — &#8362;250</div>
+      <div class="highlight-box">הוספת עמוד חדש שלא סוכם באפיון — &#8362;250</div>
+      <div class="highlight-box">שינוי מחיר / פרטים קטנים באתר — &#8362;40 לכל שינוי</div>
+    </div>
+
+    <div class="doc-section">
+      <h3>אחסון ותחזוקת האתר</h3>
+      <div class="highlight-box">עלות חודשית: &#8362;45 — כולל אחסון, גיבויים ותחזוקה טכנית</div>
+      <div class="highlight-box">הוספת דומיין אישי — &#8362;200 לשנה</div>
+    </div>
+
+    <div class="doc-section">
+      <h3>אחריות על תוכן וחומרים</h3>
+      <p>האחריות על תמונות, סרטונים, טקסטים וחומרים שנשלחים לצורך הבנייה חלה על הלקוח בלבד. הלקוח מאשר כי יש לו זכויות שימוש מלאות בכל החומרים שהועברו.</p>
+    </div>
+
+    <div class="doc-section">
       <h3>תנאי עבודה כלליים</h3>
       <ul>
-        <li>זמן אספקת האתר משתנה בהתאם למורכבות הפרויקט</li>
-        <li>הלקוח מתחייב להעביר חומרים בזמן — עיכוב עלול לעכב את המסירה</li>
-        <li>האתר נבנה בהתאם לאפיון שסוכם בשיחת האפיון</li>
+        <li>זמן אספקת האתר משתנה לפי מורכבות הפרויקט</li>
+        <li>הלקוח מתחייב להעביר חומרים בזמן — עיכוב עלול לדחות את המסירה</li>
+        <li>האתר נבנה בהתאם לאפיון שסוכם בפגישה</li>
         <li>שינויים מהותיים לאחר תחילת העבודה עשויים להיות כרוכים בתוספת תשלום</li>
-        <li>השירות אינו כולל קידום ממומן, SEO מתקדם או ניהול תוכן שוטף אלא אם סוכם אחרת מראש</li>
+        <li>השירות אינו כולל קידום ממומן, SEO מתקדם או ניהול תוכן שוטף אלא אם סוכם מראש</li>
       </ul>
+    </div>
+
+    <div class="doc-section">
+      <h3>שירותים נוספים בתוספת תשלום</h3>
+      <ul>
+        <li>צילום ועריכת וידאו</li>
+        <li>כתיבת תוכן</li>
+        <li>תרגומים</li>
+        <li>אוטומציות</li>
+        <li>חיבור מערכות מיוחדות</li>
+        <li>קמפיינים ממומנים</li>
+        <li>עיצוב לוגו</li>
+        <li>בניית דפי נחיתה נוספים</li>
+        <li>שפות נוספות באתר</li>
+        <li>מערכות מתקדמות</li>
+      </ul>
+    </div>
+
+    <div class="doc-section">
+      <h3>אחריות כללית</h3>
+      <p>נותן השירות אינו אחראי לאובדן הכנסות, ירידה במכירות, תקלות שרת, תקלות צד ג', קריסות מערכות, פריצות שאינן בשליטתו, או נזקים עקיפים מכל סוג שהוא.</p>
+    </div>
+
+    <!-- ══ PACKAGE-SPECIFIC SECTIONS ══ -->
+
+    <div class="pkg-specific pkg-basic doc-section pkg-section-wrap" style="display:none">
+      <div class="pkg-section-badge pkg-badge-basic">פרטי חבילת אתר בסיסי</div>
+      <h3>מה כלול בחבילה</h3>
+      <ul>
+        <li>אתר תדמית מקצועי עד 3 עמודים</li>
+        <li>התאמה מלאה למובייל</li>
+        <li>חיבור לוואטסאפ</li>
+        <li>טופס יצירת קשר</li>
+        <li>אבטחה בסיסית + SSL</li>
+        <li>3 סבבי תיקונים</li>
+        <li>ללא סליקה / ללא קורסים / ללא חנות</li>
+      </ul>
+      <div class="highlight-box">&#8362;2,999 — תשלום חד פעמי מראש</div>
+    </div>
+
+    <div class="pkg-specific pkg-premium doc-section pkg-section-wrap" style="display:none">
+      <div class="pkg-section-badge pkg-badge-premium">פרטי חבילת סליקה + קורסים / חנות</div>
+      <h3>מה כלול בחבילה</h3>
+      <ul>
+        <li>אתר מקצועי מותאם אישית</li>
+        <li>חנות באתר + סליקה מאובטחת</li>
+        <li>אזור תלמידים / קורסים דיגיטליים</li>
+        <li>חיבור טפסים ווואטסאפ</li>
+        <li>אבטחה מתקדמת</li>
+        <li>ניהול ועדכונים בסיסיים</li>
+        <li>ליווי אישי</li>
+        <li>3 סבבי התאמות</li>
+      </ul>
+      <h3 style="margin-top:16px">תעריפים מיוחדים לחבילה זו</h3>
+      <div class="highlight-box">עד 2 קורסים כלולים — כל קורס נוסף: &#8362;1,000</div>
+      <div class="highlight-box">עד 50 מוצרים בחנות — הוספת מוצר לאחר סיום: &#8362;35 למוצר</div>
+      <div class="highlight-box">&#8362;8,000&#8211;9,800 — המחיר הסופי נקבע בהתאם למבנה הפרויקט</div>
     </div>
 
     <!-- DIGITAL SIGNATURE -->
@@ -701,15 +796,22 @@
     d.toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' });
 
   let selectedPkg = null;
+  let selectedPkgType = null;
 
-  function selectPackage(el, name, price) {
+  function selectPackage(el, name, price, pkgType) {
     document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
     selectedPkg = name + ' — ' + price;
+    selectedPkgType = pkgType;
     const box = document.getElementById('selected-summary');
     document.getElementById('sum-pkg-name').textContent = selectedPkg;
     box.style.display = 'block';
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    // Show package-specific contract sections
+    document.querySelectorAll('.pkg-specific').forEach(s => {
+      s.style.display = s.classList.contains('pkg-' + pkgType) ? 'block' : 'none';
+    });
+    document.getElementById('contract-notice').style.display = 'none';
   }
 
   // ── Signature pad ──
