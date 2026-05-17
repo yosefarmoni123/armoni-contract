@@ -134,7 +134,7 @@
     /* ── PACKAGES GRID ── */
     .packages-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 20px;
       margin-bottom: 48px;
     }
@@ -442,8 +442,9 @@
       margin-bottom: 14px;
     }
 
-    .pkg-badge-basic   { background: var(--green); color: #fff; }
-    .pkg-badge-premium { background: #fff; color: var(--green); border: 1.5px solid var(--green); }
+    .pkg-badge-basic    { background: var(--green); color: #fff; }
+    .pkg-badge-premium  { background: #fff; color: var(--green); border: 1.5px solid var(--green); }
+    .pkg-badge-academia { background: #1a3a6b; color: #fff; }
 
     /* ── MOBILE ── */
     @media (max-width: 600px) {
@@ -608,6 +609,24 @@
         </ul>
       </div>
 
+      <div class="package-card light" onclick="selectPackage(this,'קורסים — אקדמיה','&#8362;8,000&#8211;9,800','academia')"><div class="pkg-check">&#10003;</div>
+        <div class="pkg-name">קורסים — אקדמיה</div>
+        <div class="pkg-price">&#8362;8,000&#8211;9,800</div>
+        <div class="pkg-note">* המחיר הסופי נקבע לפי מבנה הפרויקט</div>
+        <ul>
+          <li>אתר מקצועי מותאם אישית</li>
+          <li>חנות באתר</li>
+          <li>סליקה מאובטחת</li>
+          <li>אזור תלמידים / קורסים</li>
+          <li>חיבור טפסים ווואטסאפ</li>
+          <li>התאמה מלאה לעסק</li>
+          <li>אבטחה מתקדמת</li>
+          <li>ניהול ועדכונים בסיסיים</li>
+          <li>ליווי אישי</li>
+          <li>עד 3 סבבי התאמות</li>
+        </ul>
+      </div>
+
     </div>
     <!-- END PACKAGES -->
 
@@ -735,6 +754,27 @@
         <li><strong>קורסים — אקדמיה</strong></li>
       </ul>
       <h3 style="margin-top:16px">תעריפים מיוחדים לחבילה זו</h3>
+      <div class="highlight-box">עד 2 קורסים בלבד לאקדמיה — כל קורס נוסף: &#8362;1,000</div>
+      <div class="highlight-box">עד 50 מוצרים בחנות — הוספת מוצר לאחר סיום: &#8362;35 למוצר</div>
+      <div class="highlight-box">&#8362;8,000&#8211;9,800 — המחיר הסופי נקבע בהתאם למבנה הפרויקט</div>
+    </div>
+
+    <div class="pkg-specific pkg-academia doc-section pkg-section-wrap" style="display:none">
+      <div class="pkg-section-badge pkg-badge-academia">פרטי חבילת קורסים — אקדמיה</div>
+      <h3>מה כלול בחבילה</h3>
+      <ul>
+        <li>אתר מקצועי מותאם אישית</li>
+        <li>חנות באתר</li>
+        <li>סליקה מאובטחת</li>
+        <li>אזור תלמידים / קורסים</li>
+        <li>חיבור טפסים ווואטסאפ</li>
+        <li>התאמה מלאה לעסק</li>
+        <li>אבטחה מתקדמת</li>
+        <li>ניהול ועדכונים בסיסיים</li>
+        <li>ליווי אישי</li>
+        <li>עד 3 סבבי התאמות</li>
+      </ul>
+      <h3 style="margin-top:16px">תנאים מיוחדים לחבילת אקדמיה</h3>
       <div class="highlight-box">עד 2 קורסים בלבד לאקדמיה — כל קורס נוסף: &#8362;1,000</div>
       <div class="highlight-box">עד 50 מוצרים בחנות — הוספת מוצר לאחר סיום: &#8362;35 למוצר</div>
       <div class="highlight-box">&#8362;8,000&#8211;9,800 — המחיר הסופי נקבע בהתאם למבנה הפרויקט</div>
