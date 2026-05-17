@@ -413,6 +413,18 @@
 
     .btn-clear-sig:hover { border-color: #999; color: #555; }
 
+    .payment-notice {
+      background: #fff8e1;
+      border: 1.5px solid #f5c842;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #7a5c00;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
     .btn-submit {
       width: 100%;
       background: var(--green);
@@ -661,11 +673,13 @@
           <button type="button" class="btn-clear-sig" id="btn-clear-sig">נקה חתימה</button>
         </div>
 
+        <div class="payment-notice">&#128274; לאחר החתימה תועבר אוטומטית לדף התשלום המאובטח</div>
+
         <button type="submit" class="btn-submit" id="submit-btn">אני מאשר ומסכים להסכם &#10003;</button>
       </form>
 
       <div class="success-msg" id="success-msg">
-        &#9989; ההסכם נחתם בהצלחה! אישור נשלח לבעל העסק. תודה.
+        &#9989; ההסכם נחתם בהצלחה! מעביר אותך לדף התשלום...
       </div>
       <div class="error-msg" id="error-msg"></div>
     </div>
@@ -797,6 +811,10 @@
       if (data.success) {
         document.getElementById('sig-form').style.display = 'none';
         document.getElementById('success-msg').style.display = 'block';
+        const paymentUrl = selectedPkg.includes('סליקה')
+          ? 'https://mrng.to/zIYB64hZWh'
+          : 'https://mrng.to/BL18gc7PPQ';
+        setTimeout(() => { window.location.href = paymentUrl; }, 2000);
       } else {
         throw new Error(data.message || 'Error');
       }
